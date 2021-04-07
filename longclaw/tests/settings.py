@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
+    # 'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -95,5 +95,7 @@ else:
     MIDDLEWARE_CLASSES = MIDDLEWARE
 
 STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PRODUCT_VARIANT_MODEL = 'testproducts.ProductVariant'

@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class basketConfig(AppConfig):
-    name = 'basket'
+class BasketConfig(AppConfig):
+    name = 'longclaw.basket'
