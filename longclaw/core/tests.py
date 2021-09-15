@@ -5,6 +5,7 @@ from django.contrib.staticfiles import finders
 from longclaw import settings
 from longclaw.core.templatetags import longclawcore_tags
 
+
 class TagTests(TestCase):
 
     def _test_static_file(self, pth):

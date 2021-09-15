@@ -1,4 +1,5 @@
 import mock
+import six
 from django.test.client import RequestFactory
 from django.test import TestCase
 try:
@@ -6,7 +7,7 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse_lazy
 from django.core.management import call_command
-from django.utils.six import StringIO
+from six import StringIO
 
 from longclaw.tests.utils import LongclawTestCase, BasketItemFactory, ProductVariantFactory, catch_signal
 from longclaw.basket.utils import basket_id
@@ -106,7 +107,7 @@ class BasketModifiedSignalTest(LongclawTestCase):
         with catch_signal(basket_modified) as handler:
             variant = ProductVariantFactory()
             self.post_test({'variant_id': variant.id}, 'longclaw_basket_list')
-        
+
         handler.assert_called_once_with(
             basket_id=mock.ANY, # TODO: CHECK CORRECT BASKET ID IS SENT
             sender=BasketItem,
@@ -119,7 +120,7 @@ class BasketModifiedSignalTest(LongclawTestCase):
         """
         with catch_signal(basket_modified) as handler:
             self.post_test({'variant_id': self.item.variant.id}, 'longclaw_basket_list')
-        
+
         handler.assert_called_once_with(
             basket_id=mock.ANY, # TODO: CHECK CORRECT BASKET ID IS SENT
             sender=BasketItem,
@@ -132,7 +133,7 @@ class BasketModifiedSignalTest(LongclawTestCase):
         """
         with catch_signal(basket_modified) as handler:
             self.del_test('longclaw_basket_detail', {'variant_id': self.item.variant.id})
-        
+
         handler.assert_called_once_with(
             basket_id=mock.ANY, # TODO: CHECK CORRECT BASKET ID IS SENT
             sender=BasketItem,
