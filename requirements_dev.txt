@@ -3,12 +3,12 @@ bumpversion
 setuptools
 wheel
 
-coverage>=4.5.2
-mock>=2.0.0
-flake8>=3.6.0
-tox>=3.5.3
-codecov>=2.0.15
+coverage
+mock
+flake8
+tox
+codecov
 
 # Additional test requirements go here
-factory_boy>=2.11.1
-wagtail-factories>=1.1.0
+factory_boy
+wagtail-factories
