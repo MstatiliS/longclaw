@@ -1,5 +1,6 @@
 from longclaw.checkout.errors import PaymentError
 
+
 class BasePayment(object):
     """
     Provides the interface for payment backends and
@@ -37,7 +38,7 @@ class BasePayment(object):
         Should return an iterable of JS paths which can
         be used in <script> tags
         """
-        return ('http://dummy.js', 'dummy.js')
+        return 'http://dummy.js', 'dummy.js'
 
     def issue_refund(self, identifier, amount):
         """Issue a refund of the given amount.

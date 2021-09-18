@@ -9,7 +9,6 @@ from rest_framework import status
 
 from wagtail_factories import PageFactory
 
-
 from longclaw.basket.models import BasketItem
 from longclaw.orders.models import Order
 from longclaw.shipping.models import Address, Country, ShippingRate
@@ -32,6 +31,7 @@ class OrderFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Order
 
+
 class CountryFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Country
@@ -42,7 +42,6 @@ class CountryFactory(factory.django.DjangoModelFactory):
 
 
 class AddressFactory(factory.django.DjangoModelFactory):
-
     class Meta:
         model = Address
 
@@ -52,6 +51,7 @@ class AddressFactory(factory.django.DjangoModelFactory):
     city = factory.Faker('text', max_nb_chars=64)
     postcode = factory.Faker('text', max_nb_chars=10)
     country = factory.SubFactory(CountryFactory)
+
 
 class ShippingRateFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -73,6 +73,7 @@ class ShippingRateFactory(factory.django.DjangoModelFactory):
             for country in extracted:
                 self.countries.add(country)
 
+
 class ProductFactory(PageFactory):
     """ Create a random Product
     """
@@ -83,8 +84,8 @@ class ProductFactory(PageFactory):
     title = factory.Faker('sentence', nb_words=1)
     description = factory.Faker('text')
 
-class ProductVariantFactory(factory.django.DjangoModelFactory):
 
+class ProductVariantFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ProductVariant
 
@@ -96,12 +97,12 @@ class ProductVariantFactory(factory.django.DjangoModelFactory):
 
 
 class BasketItemFactory(factory.django.DjangoModelFactory):
-
     class Meta:
         model = BasketItem
 
     quantity = 1
     variant = factory.SubFactory(ProductVariantFactory)
+
 
 class LongclawTestCase(APITestCase):
 

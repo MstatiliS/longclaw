@@ -10,8 +10,8 @@ from wagtail.contrib.modeladmin.views import InspectView
 from longclaw.orders.models import Order
 from longclaw.settings import API_URL_PREFIX
 
-class OrderButtonHelper(ButtonHelper):
 
+class OrderButtonHelper(ButtonHelper):
     detail_button_classnames = []
     cancel_button_classnames = ['no']
 
@@ -120,5 +120,6 @@ class OrderModelAdmin(ModelAdmin):
                 name=self.url_helper.get_action_url_name('detail')),
         )
         return urls
+
 
 modeladmin_register(OrderModelAdmin)

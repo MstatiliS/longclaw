@@ -2,6 +2,7 @@ from django.forms import ModelForm, ModelChoiceField
 from longclaw.configuration.models import Configuration
 from longclaw.shipping.models import Address, Country
 
+
 class AddressForm(ModelForm):
     class Meta:
         model = Address
@@ -22,4 +23,3 @@ class AddressForm(ModelForm):
         else:
             queryset = Country.objects.exclude(shippingrate=None)
         self.fields['country'] = ModelChoiceField(queryset)
-

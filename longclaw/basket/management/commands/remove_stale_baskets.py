@@ -2,6 +2,7 @@ import datetime
 from django.core.management import BaseCommand
 from longclaw.basket.models import BasketItem
 
+
 class Command(BaseCommand):
     """Remove old BasketItems.
     This command can be used in conjunction with e.g. a cron job

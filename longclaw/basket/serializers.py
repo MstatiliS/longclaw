@@ -3,8 +3,8 @@ from rest_framework import serializers
 from longclaw.products.serializers import ProductVariantSerializer
 from longclaw.basket.models import BasketItem
 
-class BasketItemSerializer(serializers.ModelSerializer):
 
+class BasketItemSerializer(serializers.ModelSerializer):
     variant = ProductVariantSerializer()
     price = serializers.SerializerMethodField()
     total = serializers.SerializerMethodField()
@@ -18,4 +18,3 @@ class BasketItemSerializer(serializers.ModelSerializer):
 
     def get_total(self, obj):
         return obj.total()
-    

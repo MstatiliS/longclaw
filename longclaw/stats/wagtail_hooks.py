@@ -5,6 +5,7 @@ from longclaw.orders.models import Order
 from longclaw.stats import stats
 from longclaw.configuration.models import Configuration
 from longclaw.utils import ProductVariant, maybe_get_product_model
+from wagtail.core.models import Site
 
 
 class LongclawSummaryItem(SummaryItem):
@@ -19,8 +20,10 @@ class LongclawSummaryItem(SummaryItem):
             'icon': 'icon-doc-empty-inverse'
         }
 
+
 class OutstandingOrders(LongclawSummaryItem):
     order = 10
+
     def get_context(self):
         orders = Order.objects.filter(status=Order.SUBMITTED)
         return {
@@ -30,8 +33,10 @@ class OutstandingOrders(LongclawSummaryItem):
             'icon': 'icon-warning'
         }
 
+
 class ProductCount(LongclawSummaryItem):
     order = 20
+
     def get_context(self):
         product_model = maybe_get_product_model()
         if product_model:
@@ -45,10 +50,12 @@ class ProductCount(LongclawSummaryItem):
             'icon': 'icon-list-ul'
         }
 
+
 class MonthlySales(LongclawSummaryItem):
     order = 30
+
     def get_context(self):
-        settings = Configuration.for_site(self.request.site)
+        settings = Configuration.for_site(Site.find_for_request(self.request))
         sales = stats.sales_for_time_period(*stats.current_month())
         return {
             'total': "{}{}".format(settings.currency_html_code,
@@ -58,9 +65,11 @@ class MonthlySales(LongclawSummaryItem):
             'icon': 'icon-tick'
         }
 
+
 class LongclawStatsPanel(SummaryItem):
     order = 110
     template = 'stats/stats_panel.html'
+
     def get_context(self):
         month_start, month_end = stats.current_month()
         daily_sales = stats.daily_sales(month_start, month_end)
@@ -80,11 +89,8 @@ class LongclawStatsPanel(SummaryItem):
         }
 
 
-
-
 @hooks.register('construct_homepage_summary_items')
 def add_longclaw_summary_items(request, items):
-
     # We are going to replace everything with our own items
     items[:] = []
     items.extend([
@@ -92,6 +98,7 @@ def add_longclaw_summary_items(request, items):
         ProductCount(request),
         MonthlySales(request)
     ])
+
 
 @hooks.register('construct_homepage_panels')
 def add_stats_panel(request, panels):

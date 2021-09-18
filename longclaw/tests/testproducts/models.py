@@ -5,6 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from longclaw.products.models import ProductVariantBase, ProductBase
 
+
 class ProductIndex(Page):
     """Index page for all products
     """

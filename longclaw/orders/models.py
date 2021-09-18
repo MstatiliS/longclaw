@@ -3,6 +3,7 @@ from django.db import models
 from longclaw.settings import PRODUCT_VARIANT_MODEL
 from longclaw.shipping.models import Address
 
+
 class Order(models.Model):
     SUBMITTED = 1
     FULFILLED = 2
@@ -56,7 +57,6 @@ class Order(models.Model):
         """
         return self.items.count()
 
-
     def refund(self):
         """Issue a full refund for this order
         """
@@ -82,6 +82,7 @@ class Order(models.Model):
             self.refund()
         self.status = self.CANCELLED
         self.save()
+
 
 class OrderItem(models.Model):
     product = models.ForeignKey(PRODUCT_VARIANT_MODEL, on_delete=models.DO_NOTHING)

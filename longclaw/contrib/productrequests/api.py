@@ -6,11 +6,12 @@ from longclaw.contrib.productrequests.serializers import ProductRequestSerialize
 from longclaw.contrib.productrequests.models import ProductRequest
 from longclaw.utils import ProductVariant, maybe_get_product_model
 
+
 class ProductRequestViewSet(viewsets.ModelViewSet):
     """create/list/get product requests
     """
     serializer_class = ProductRequestSerializer
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny,)
     queryset = ProductRequest.objects.all()
 
     def create(self, request):

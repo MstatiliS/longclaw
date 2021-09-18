@@ -4,6 +4,7 @@ from longclaw.tests.testproducts.models import ProductIndex
 from longclaw.tests.utils import ProductVariantFactory
 from longclaw.products.serializers import ProductVariantSerializer
 
+
 class TestProducts(WagtailPageTests):
 
     def setUp(self):

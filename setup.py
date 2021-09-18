@@ -8,12 +8,10 @@ import subprocess
 from setuptools import setup
 from setuptools.command.sdist import sdist as base_sdist
 
-
 class sdist(base_sdist):
     """
     Regular sdist class plus compilation of front end assets
     """
-
     def compile_assets(self):
         """
         Compile the front end assets
@@ -48,10 +46,10 @@ def get_version(*file_paths):
 
 version = get_version("longclaw", "__init__.py")
 
+
 if sys.argv[-1] == 'publish':
     try:
         import wheel
-
         print("Wheel version: ", wheel.__version__)
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')
@@ -65,6 +63,7 @@ if sys.argv[-1] == 'tag':
     os.system("git tag -a %s -m 'version %s'" % (version, version))
     os.system("git push --tags")
     sys.exit()
+
 
 try:
     readme = open('README.rst').read()
@@ -88,13 +87,13 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        'django',
-        'wagtail',
-        'django-countries',
-        'django-extensions',
-        'djangorestframework',
-        'django-ipware',
-        'django-polymorphic',
+        'django==2.2.5',
+        'wagtail==2.6.2',
+        'django-countries==5.5',
+        'django-extensions==2.2.1',
+        'djangorestframework==3.10.3',
+        'django-ipware==2.1.0',
+        'django-polymorphic==2.0.3',
     ],
     license="MIT",
     zip_safe=False,
@@ -102,7 +101,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
-        'Framework :: Django :: >=2.0',
+        'Framework :: Django :: 2.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
@@ -110,10 +109,6 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
     ],
     entry_points="""
         [console_scripts]

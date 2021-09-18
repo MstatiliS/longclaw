@@ -2,8 +2,8 @@ from django import template
 from longclaw.shipping.utils import get_shipping_cost
 from longclaw.configuration.models import Configuration
 
-
 register = template.Library()
+
 
 @register.simple_tag(takes_context=True)
 def shipping_rate(context, **kwargs):

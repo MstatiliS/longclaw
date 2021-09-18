@@ -1,11 +1,9 @@
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from wagtail.core import hooks
 from wagtail.admin import widgets
 from longclaw.utils import ProductVariant
+
 
 @hooks.register('register_page_listing_buttons')
 def product_requests_button(page, page_perms, is_parent=False):

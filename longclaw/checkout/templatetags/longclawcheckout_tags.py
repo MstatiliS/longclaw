@@ -3,6 +3,7 @@ from longclaw.checkout.utils import GATEWAY
 
 register = template.Library()
 
+
 @register.simple_tag
 def gateway_client_js():
     """

@@ -3,10 +3,7 @@ from django.utils.encoding import force_text
 from django.test import TestCase
 from django.test.client import RequestFactory
 from wagtail.core.models import Site
-try:
-    from django.urls import reverse_lazy
-except ImportError:
-    from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 from longclaw.tests.utils import (
     LongclawTestCase,
@@ -26,7 +23,6 @@ from longclaw.basket.utils import basket_id
 class CheckoutApiTest(LongclawTestCase):
 
     def setUp(self):
-
         self.addresses = {
             'shipping_name': '',
             'shipping_address_line1': '',
@@ -112,7 +108,7 @@ class CheckoutApiShippingTest(LongclawTestCase):
             shipping_option=rate.name,
         )
         self.assertEqual(order.shipping_rate, amount)
-    
+
     def test_create_order_with_address_shipping_option(self):
         amount = 12
         rate = ShippingRate.objects.create(
@@ -130,7 +126,7 @@ class CheckoutApiShippingTest(LongclawTestCase):
             shipping_option=rate.name,
         )
         self.assertEqual(order.shipping_rate, amount)
-    
+
     def test_create_order_with_address_and_basket_shipping_option(self):
         amount = 13
         rate = ShippingRate.objects.create(
@@ -255,7 +251,6 @@ class CheckoutTest(TestCase):
         order = OrderFactory(shipping_address=address, billing_address=address)
         response = self.client.get(reverse_lazy('longclaw_checkout_success', kwargs={'pk': order.id}))
         self.assertEqual(response.status_code, 200)
-
 
 
 class GatewayTests(TestCase):

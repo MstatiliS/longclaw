@@ -12,7 +12,7 @@ def current_month():
     now = datetime.now()
     n_days = calendar.monthrange(now.year, now.month)[1]
     month_start = datetime.strptime('{}{}{}'.format(now.year, now.month, 1), '%Y%m%d')
-    month_end = datetime.strptime('{}{}{}'.format(now.year,now.month, n_days), '%Y%m%d')
+    month_end = datetime.strptime('{}{}{}'.format(now.year, now.month, n_days), '%Y%m%d')
     return month_start, month_end
 
 
@@ -31,6 +31,7 @@ def daily_sales(from_date, to_date):
     sales = sales_for_time_period(from_date, to_date)
     grouped = itertools.groupby(sales, lambda order: order.payment_date.strftime("%Y-%m-%d"))
     return grouped
+
 
 def sales_by_product(from_date, to_date):
     sales = OrderItem.objects.filter(

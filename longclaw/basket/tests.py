@@ -1,11 +1,8 @@
 import mock
-import six
 from django.test.client import RequestFactory
 from django.test import TestCase
-try:
-    from django.urls import reverse_lazy
-except ImportError:
-    from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
+
 from django.core.management import call_command
 from six import StringIO
 

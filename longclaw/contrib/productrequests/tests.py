@@ -2,6 +2,7 @@ from longclaw.tests.utils import LongclawTestCase, ProductVariantFactory
 from longclaw.contrib.productrequests.models import ProductRequest
 from longclaw.contrib.productrequests.templatetags import productrequests_tags
 
+
 class ProductRequestTest(LongclawTestCase):
 
     def setUp(self):

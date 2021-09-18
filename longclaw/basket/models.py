@@ -1,6 +1,7 @@
 from django.db import models
 from longclaw.settings import PRODUCT_VARIANT_MODEL
 
+
 class BasketItem(models.Model):
     basket_id = models.CharField(max_length=32)
     date_added = models.DateTimeField(auto_now_add=True)

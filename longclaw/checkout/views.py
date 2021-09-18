@@ -3,10 +3,7 @@ from django.views.generic import TemplateView
 from django.views.decorators.http import require_GET
 from django.http import HttpResponseRedirect
 
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from longclaw.shipping.forms import AddressForm
 from longclaw.checkout.forms import CheckoutForm
@@ -65,11 +62,12 @@ class CheckoutView(TemplateView):
             else:
                 billing_address = shipping_address
 
-        if all_ok:
+        # if all_ok:
             order = create_order(
                 email,
                 request,
                 shipping_address=shipping_address,
+                # assign billing address
                 billing_address=billing_address,
                 shipping_option=shipping_option,
                 capture_payment=True

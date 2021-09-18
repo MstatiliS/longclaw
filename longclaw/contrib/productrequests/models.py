@@ -1,6 +1,7 @@
 from django.db import models
 from longclaw.settings import PRODUCT_VARIANT_MODEL
 
+
 class ProductRequest(models.Model):
     variant = models.ForeignKey(
         PRODUCT_VARIANT_MODEL, related_name='requests', on_delete=models.CASCADE

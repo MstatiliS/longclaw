@@ -6,6 +6,7 @@ import os
 from django.core.management import ManagementUtility
 import longclaw
 
+
 def create_project(args):
     """
     Create a new django project using the longclaw template
@@ -34,6 +35,7 @@ def create_project(args):
     utility.execute()
     print("{} has been created.".format(args.project_name))
 
+
 def build_assets(args):
     """
     Build the longclaw assets
@@ -52,6 +54,7 @@ def build_assets(args):
     except (OSError, subprocess.CalledProcessError) as err:
         print('Error compiling assets:  {}'.format(err))
         raise SystemExit(1)
+
 
 def main():
     """
@@ -78,6 +81,7 @@ def main():
     except AttributeError:
         parser.print_help()
         sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

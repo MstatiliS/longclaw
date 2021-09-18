@@ -10,6 +10,7 @@ from longclaw.basket.utils import destroy_basket
 from longclaw.checkout.utils import create_order, GATEWAY
 from longclaw.checkout.errors import PaymentError
 
+
 @api_view(['GET'])
 @permission_classes([permissions.AllowAny])
 def create_token(request):
@@ -19,6 +20,7 @@ def create_token(request):
     """
     token = GATEWAY.get_token(request)
     return Response({'token': token}, status=status.HTTP_200_OK)
+
 
 @transaction.atomic
 @api_view(['POST'])
@@ -55,6 +57,7 @@ def create_order_with_token(request):
     destroy_basket(request)
 
     return Response(data={"order_id": order.id}, status=status.HTTP_201_CREATED)
+
 
 @transaction.atomic
 @api_view(['POST'])

@@ -9,7 +9,7 @@ USE_TZ = True
 ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+SECRET_KEY = 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk53cr3tK3Y'
 
 DATABASES = {
     'default': {
@@ -99,3 +99,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PRODUCT_VARIANT_MODEL = 'testproducts.ProductVariant'
+
+DEFAULT_SHIPPING_ENABLED = False

@@ -3,8 +3,8 @@ from longclaw.orders.models import Order, OrderItem
 from longclaw.products.serializers import ProductVariantSerializer
 from longclaw.shipping.serializers import AddressSerializer
 
-class OrderItemSerializer(serializers.ModelSerializer):
 
+class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductVariantSerializer()
 
     class Meta:
@@ -13,7 +13,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-
     items = OrderItemSerializer(many=True)
     shipping_address = AddressSerializer()
     total = serializers.SerializerMethodField()
