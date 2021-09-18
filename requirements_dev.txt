@@ -1,14 +1,14 @@
 -r requirements.txt
-bumpversion
+bumpversion==1.0.1
 setuptools
 wheel
 
-coverage
-mock
-flake8
-tox
-codecov
+coverage>=5.5
+mock>=4.0.3
+flake8>=3.9.2
+tox>=3.24.3
+codecov>=2.1.12
 
 # Additional test requirements go here
-factory_boy
-wagtail-factories
+factory_boy>=3.2.0
+wagtail-factories>=2.0.1

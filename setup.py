@@ -103,7 +103,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
         'Framework :: Django :: 2.0',
-        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',

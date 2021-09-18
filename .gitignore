@@ -4,6 +4,7 @@ __pycache__
 .vscode/
 tags
 node_modules/
+venv/
 
 # C extensions
 *.so
